@@ -1,0 +1,2 @@
+# TRC-PAID-SCRIPT-BY-SC-AND-RED
+Thanks 

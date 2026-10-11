@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>TRC PAID SCRIPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+:root{--bg:#e4e8ed;--bg2:#f1f4f7;--card:#f7f9fb;--line:#c3ccd6;--tx:#14181e;--mu:#4f5b69;--gl:#2f66b3;--er:#b3261e;--ok:#17803d;--hl:rgba(60,100,160,.14);--glow:rgba(255,255,255,.95);--ct:linear-gradient(100deg,#1a1f26 0%,#6f7c8b 22%,#1a1f26 44%,#8794a3 66%,#1a1f26 88%);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171c;--bg2:#1a1e25;--card:#1b2027;--line:#2f3743;--tx:#e8ecf1;--mu:#9aa5b2;--gl:#8db4ea;--er:#ff8f86;--ok:#5fd68a;--hl:rgba(255,255,255,.09);--glow:rgba(120,160,220,.22);--ct:linear-gradient(100deg,#fff 0%,#98a4b1 22%,#f3f6f9 44%,#6f7b89 66%,#e1e7ed 88%)}}
+:root[data-theme="dark"]{--bg:#14171c;--bg2:#1a1e25;--card:#1b2027;--line:#2f3743;--tx:#e8ecf1;--mu:#9aa5b2;--gl:#8db4ea;--er:#ff8f86;--ok:#5fd68a;--hl:rgba(255,255,255,.09);--glow:rgba(120,160,220,.22);--ct:linear-gradient(100deg,#fff 0%,#98a4b1 22%,#f3f6f9 44%,#6f7b89 66%,#e1e7ed 88%)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);background:var(--bg)}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:transparent;color:var(--tx);font:400 1rem/1.5 Manrope,system-ui,-apple-system,Segoe UI,sans-serif}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(900px 520px at 78% -6%,var(--glow),transparent 62%) no-repeat}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+#app{flex:1;width:100%;display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:start;padding-top:28px}
+.mn{min-width:0;overflow-wrap:break-word}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;cursor:pointer;color:var(--tx);font:700 .68rem/1 Syncopate,system-ui,sans-serif;letter-spacing:.12em;flex:none}
+.mi{width:22px;height:26px;flex:none}
+nav{margin-left:auto;display:flex;align-items:center;gap:6px;min-width:0}
+.lnk{background:none;border:0;color:var(--mu);font:700 .9rem Manrope,system-ui,sans-serif;padding:8px 10px;cursor:pointer;border-radius:8px}
+.lnk:hover{color:var(--tx)}
+.lnk:focus-visible{outline:2px solid var(--gl);outline-offset:2px}
+.lnk,.btn,.bd{white-space:nowrap}
+.btn{font:700 .9rem Manrope,system-ui,sans-serif;border-radius:999px;padding:10px 18px;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--tx);transition:transform .2s,filter .2s}
+a.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.pri{border-color:#7d8997;color:#12161b;background:linear-gradient(180deg,#fbfcfd 0%,#c4ccd5 46%,#8c98a5 54%,#dde3ea 100%);box-shadow:inset 0 1px 0 #fff,0 8px 20px -10px rgba(30,50,80,.6)}
+.pri:hover{transform:translateY(-1px);filter:brightness(1.06)}
+.btn:disabled{opacity:.6;cursor:default;transform:none;filter:none}
+.btn:focus-visible,.brand:focus-visible{outline:2px solid var(--gl);outline-offset:2px}
+.view{display:none;padding:8px 0 72px}
+.view.on{display:block;animation:in .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(12px);filter:blur(5px)}}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
+h1{font:700 clamp(1.05rem,2.9vw,1.65rem)/1.25 Syncopate,system-ui,sans-serif;letter-spacing:.01em;margin:0 0 20px}
+.ln{display:block;overflow:hidden;padding-bottom:.12em}
+.ln i{display:block;font-style:normal;background:var(--ct);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:up 1s cubic-bezier(.2,.8,.2,1) both,sh 8s ease-in-out infinite alternate}
+.ln:nth-child(2) i{animation-delay:.14s,0s}
+@keyframes up{from{transform:translateY(110%)}}
+@keyframes sh{to{background-position:100% 0}}
+.tagl{display:inline-block;margin:0 0 14px;font-size:.78rem;font-weight:700;padding:4px 12px;border:1px solid var(--line);border-radius:999px;color:var(--mu)}
+.lead{color:var(--mu);font-size:1.02rem;line-height:1.65;max-width:46ch;margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.stage{display:grid;place-items:center;perspective:900px;position:relative;min-height:260px}
+.stage::before{content:"";position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent)}
+.fl{position:relative;width:min(66%,230px);animation:fl 6s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.shield{display:block;width:100%;height:auto;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out;filter:drop-shadow(0 26px 28px rgba(0,0,0,.35))}
+.sw{animation:sw 4.8s ease-in-out infinite}
+@keyframes sw{0%,40%{transform:translateX(-90px)}100%{transform:translateX(330px)}}
+.note{display:flex;gap:16px;align-items:flex-start;margin-top:40px;padding:20px 22px 20px 26px;border:1px solid var(--line);border-radius:16px;background:var(--card);position:relative;overflow:hidden}
+.note.t{margin-top:20px}
+.note::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--ct)}
+.ni{width:30px;height:30px;flex:none;margin-top:2px}
+.note h3{margin:0 0 4px;font-size:1.05rem}.note p{margin:0;color:var(--mu);line-height:1.6}
+.h2{font-size:1.4rem;font-weight:800;margin:48px 0 0;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{position:relative;padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--x,50%) var(--y,0),var(--hl),transparent 65%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card h3{margin:0 0 8px;font-size:1.05rem;position:relative}.card p{margin:0;color:var(--mu);line-height:1.6;font-size:.95rem;position:relative}
+.card p+p{margin-top:6px}
+.card b{color:var(--tx)}
+.card .btn{position:relative;margin-top:14px}
+.steps{list-style:none;margin:16px 0 0;padding:0}
+.steps li{display:flex;gap:16px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--line)}
+.steps b{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#12161b;font-size:.9rem;background:linear-gradient(180deg,#fbfcfd,#c4ccd5 46%,#8c98a5 54%,#dde3ea);box-shadow:inset 0 1px 0 #fff}
+.steps span{color:var(--mu)}.steps strong{display:block;color:var(--tx)}
+.panel{max-width:440px;margin:0 auto;padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:0 30px 60px -32px rgba(0,0,0,.5)}
+.panel.wide{max-width:720px;margin:40px 0 0}
+.panel h2{margin:0 0 8px;font:700 1rem/1.3 Syncopate,system-ui,sans-serif;letter-spacing:.05em}
+.sub{color:var(--mu);margin:0 0 20px;line-height:1.55;font-size:.95rem}
+.chk{list-style:none;margin:0 0 18px;padding:0}
+.chk li{position:relative;padding:12px 0 12px 34px;border-top:1px solid var(--line);color:var(--mu);line-height:1.55}
+.chk li::before{content:"";position:absolute;left:4px;top:15px;width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,#fbfcfd,#c4ccd5 46%,#8c98a5 54%,#dde3ea)}
+.chk li::after{content:"";position:absolute;left:10px;top:19px;width:5px;height:9px;border:solid #12161b;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.chk b{color:var(--tx)}
+.warn{margin:0 0 6px;padding:12px 14px;border:1px solid var(--line);border-left:4px solid var(--er);border-radius:10px;background:var(--bg2);color:var(--tx);font-size:.92rem;line-height:1.5}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.lh{margin:0 0 8px;font:700 1.05rem/1.3 Syncopate,system-ui,sans-serif;letter-spacing:.05em}
+.bds{display:inline-flex;align-items:center;gap:8px;vertical-align:middle;margin:0 8px}
+.bds:empty{display:none}
+.bd{display:inline-flex;align-items:center;gap:5px}
+.bd svg{width:1.15em;height:1.15em;fill:currentColor;flex:none}
+.bd em{font:700 .74rem Manrope,system-ui,sans-serif;font-style:normal;letter-spacing:.02em}
+footer{border-top:1px solid var(--line);padding:24px 0 32px;color:var(--mu);font-size:.88rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+#sb{display:flex;flex-direction:column;gap:10px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px);width:236px;padding:14px;border:1px solid var(--line);border-radius:24px;background:var(--card);overflow:hidden;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+#sb.c{width:78px}
+.si{display:flex;align-items:center;gap:14px;height:52px;padding:0 14px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);color:var(--tx);font:700 .95rem Manrope,system-ui,sans-serif;cursor:pointer;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.06);transition:border-color .25s}
+.si svg,.tg svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.si:hover{border-color:var(--gl)}
+.si.on{background:linear-gradient(90deg,#000,#222831);border-color:#e8ecf1;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 10px 24px -12px rgba(0,0,0,.8)}
+.si:focus-visible,.tg:focus-visible{outline:2px solid var(--gl);outline-offset:2px}
+.tg{align-self:flex-end;width:40px;height:40px;display:grid;place-items:center;border:0;background:none;color:var(--mu);cursor:pointer;border-radius:12px}
+.tg:hover{color:var(--tx)}
+.tg svg{transition:transform .35s}
+#sb:not(.c) .tg svg{transform:rotate(180deg)}
+#sb.c .tg{align-self:center}
+#sb.c .si{justify-content:center;padding:0}
+#sb.c .si span,#sb.c .ss div{display:none}
+.ss{display:flex;align-items:center;gap:10px;margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:14px;font-size:.82rem;line-height:1.35}
+.ss svg{width:22px;height:26px;flex:none}
+.ss b{display:block}.ss span{color:var(--mu)}
+#sb.c .ss{justify-content:center;padding:10px}
+@media (max-width:1000px){.hero{grid-template-columns:1fr}}
+@media (max-width:820px){
+#app{display:block;padding-top:16px}
+.mn{padding-bottom:24px}
+footer{padding-bottom:calc(124px + env(safe-area-inset-bottom,0px))}
+#sb,#sb.c{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);top:auto;width:auto;flex-direction:row;justify-content:space-around;padding:8px;border-radius:22px;z-index:8;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);background:color-mix(in srgb,var(--card) 88%,transparent)}
+.tg,.ss{display:none}
+.si,#sb.c .si{width:48px;height:48px;padding:0;justify-content:center}
+.si span{display:none}
+.grid,.g2{grid-template-columns:1fr}
+.stage{display:none}
+}
+@media (max-width:640px){.bt{display:none}}
+@media (max-width:520px){.brand{font-size:.58rem;letter-spacing:.08em;gap:7px}.panel{padding:22px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="gc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdfefe"/><stop offset=".22" stop-color="#8f9ba8"/><stop offset=".4" stop-color="#f0f3f6"/><stop offset=".6" stop-color="#6a7684"/><stop offset=".8" stop-color="#d8dfe6"/><stop offset="1" stop-color="#85919e"/></linearGradient>
+<linearGradient id="gd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a424d"/><stop offset=".5" stop-color="#1b2027"/><stop offset="1" stop-color="#2c333c"/></linearGradient>
+<linearGradient id="gs" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<symbol id="shp" viewBox="0 0 240 280"><path d="M120 8L222 46V128C222 200 176 250 120 272C64 250 18 200 18 128V46Z" fill="url(#gc)"/><path d="M120 26L204 57V128C204 188 168 230 120 250C72 230 36 188 36 128V57Z" fill="url(#gd)"/><g fill="url(#gc)"><circle cx="120" cy="116" r="22"/><path d="M108 130h24l8 52h-40z"/></g></symbol>
+<symbol id="i-p" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></symbol>
+<symbol id="i-h" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+<symbol id="i-g" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+<symbol id="i-b" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></symbol>
+<symbol id="i-o" viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></symbol>
+</defs></svg>
+
+<header><div class="wrap bar">
+<button class="brand" data-go="paid" type="button" aria-label="TRC PAID SCRIPT home"><svg class="mi" viewBox="0 0 240 280"><use href="#shp"/></svg><span class="bt">TRC PAID SCRIPT</span></button>
+<nav id="nav"><button class="lnk" id="th" type="button">Theme</button><button class="lnk" id="sn" type="button">Sound: On</button></nav>
+</div></header>
+
+<main class="wrap" id="app">
+<aside id="sb" aria-label="Menu">
+<button class="tg" id="tg" type="button" aria-label="Collapse or expand menu"><svg viewBox="0 0 24 24"><use href="#i-g"/></svg></button>
+<button class="si" data-go="paid" type="button"><svg viewBox="0 0 24 24"><use href="#i-p"/></svg><span>Paid</span></button>
+<button class="si" data-go="credit" type="button"><svg viewBox="0 0 24 24"><use href="#i-h"/></svg><span>Credit</span></button>
+<div class="ss"><svg viewBox="0 0 240 280" aria-hidden="true"><use href="#shp"/></svg><div><b>Manual review</b><span>Proof on TRC Server</span></div></div>
+</aside>
+
+<div class="mn">
+
+<section class="view" id="v-paid">
+<div class="hero">
+<div>
+<span class="tagl">JSD Instant Ult &bull; By TRC SERVICE</span>
+<h1><span class="ln"><i>Premium script</i></span><span class="ln"><i>By TRC SERVICE</i></span></h1>
+<p class="lead">Buy the gamepass on Roblox, take a screenshot as proof, then send it on the TRC Server. Our staff checks it and puts you on the whitelist to access the script. Payment is handled by Roblox.</p>
+<div class="cta"><a class="btn pri" id="buy" href="https://www.roblox.com/game-pass/2005899012/buy-jsd-infinite-ult" target="_blank" rel="noopener noreferrer">Buy The Script</a><a class="btn dsc" href="#" target="_blank" rel="noopener noreferrer">Send proof on TRC Server</a></div>
+</div>
+<div class="stage" aria-hidden="true"><div class="fl">
+<svg class="shield" viewBox="0 0 240 280"><defs><clipPath id="sc"><path d="M120 8L222 46V128C222 200 176 250 120 272C64 250 18 200 18 128V46Z"/></clipPath></defs><use href="#shp"/><g clip-path="url(#sc)"><polygon class="sw" points="0,0 60,0 20,280 -40,280" fill="url(#gs)"/></g></svg>
+</div></div>
+</div>
+
+<h2 class="h2">How it works</h2>
+<ol class="steps">
+<li><b>1</b><div><strong>Buy the gamepass</strong><span>Purchase it on Roblox with the account you play on.</span></div></li>
+<li><b>2</b><div><strong>Take a screenshot as proof</strong><span>Show the gamepass page marked as owned, plus your purchase history or profile so your username is visible.</span></div></li>
+<li><b>3</b><div><strong>Send it on the TRC Server</strong><span>Join the TRC Server and send the screenshot to staff with your Roblox username.</span></div></li>
+<li><b>4</b><div><strong>Get your script</strong><span>Staff checks your proof and puts your Roblox user on the whitelist so you can access the script.</span></div></li>
+</ol>
+
+<div class="panel wide" id="vp">
+<h2>Send your proof</h2>
+<p class="sub">Already bought the gamepass? Follow these steps and our staff will check it.</p>
+<ul class="chk">
+<li><b>Open the gamepass page on Roblox</b> while logged in to the account that bought it. It should show as owned.</li>
+<li><b>Take a screenshot.</b> Include your Roblox purchase history or your profile so your username is visible.</li>
+<li><b>Join the TRC Server</b> and send the screenshot to staff, with your Roblox username in the message.</li>
+</ul>
+<p class="warn">Never share your Roblox password or login cookie. Staff will never ask for it.</p>
+<div class="row"><a class="btn pri dsc" href="#" target="_blank" rel="noopener noreferrer">Open TRC Server</a><a class="btn" href="https://www.roblox.com/game-pass/2005899012/buy-jsd-infinite-ult" target="_blank" rel="noopener noreferrer">Don't own it yet? Buy The Script</a></div>
+</div>
+
+<div class="note"><svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5z" fill="url(#gc)"/><path d="M8.5 12.2l2.5 2.5 4.5-5" fill="none" stroke="#1b2027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div><h3>Safe and trusted</h3><p>TRC Team confirms the script on this site is safe and trusted. Every release is made and maintained by TRC Team.</p></div></div>
+</section>
+
+<section class="view" id="v-credit">
+<h2 class="lh">Credit</h2>
+<p class="sub">The people and services behind TRC PAID SCRIPT.</p>
+<div class="note t"><svg class="ni" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5z" fill="url(#gc)"/><path d="M8.5 12.2l2.5 2.5 4.5-5" fill="none" stroke="#1b2027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div><h3>Trusted from TRC Team</h3><p>TRC Team confirms the scripts on this site are safe and trusted.</p></div></div>
+<div class="grid g2">
+<div class="card"><h3>Owner</h3><p><b>Redsky</b><span id="cdo"></span></p><p>Owner Of TRC SERVICE SCRIPT.</p></div>
+<div class="card"><h3>Developer</h3><p><b>ScripterblablaOnly</b><span id="cdb"></span></p><p>Developer Of TRC SERVICE SCRIPT.</p></div>
+<div class="card"><h3>TRC Team</h3><p>Makes and maintains every script release on this site.</p></div>
+<div class="card"><h3>Payments</h3><p>Handled entirely by Roblox through a gamepass. This site never sees your payment details.</p><a class="btn" href="https://www.roblox.com/game-pass/2005899012/buy-jsd-infinite-ult" target="_blank" rel="noopener noreferrer">View gamepass</a></div>
+</div>
+</section>
+
+</div>
+</main>
+
+<footer><div class="wrap"><span>TRC PAID SCRIPT. Made by TRC Team.</span><span>Only run scripts from sources you trust.</span></div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const pick=n=>{try{return window[n]}catch(e){return{getItem(){throw 0},setItem(){throw 0},removeItem(){throw 0}}}};
+const mk=st=>{const m={};return{get(k,d){try{const v=st.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return k in m?m[k]:d}},set(k,v){m[k]=v;try{st.setItem(k,JSON.stringify(v))}catch(e){}},del(k){delete m[k];try{st.removeItem(k)}catch(e){}}}};
+const L=mk(pick('localStorage'));
+
+/* SETUP: paste your TRC Server (Discord) invite link between the quotes, e.g. 'https://discord.gg/yourcode' */
+const DISCORD_INVITE='';
+
+/* ---- Badges (Credit page) ---- */
+const TT={owner:{n:'Owner',c:'#f5b82e',i:'i-o'},dev:{n:'Developer',c:'#a78bfa',i:'i-b'}};
+const bdg=(ids,full)=>{const s=document.createElement('span');s.className='bds';
+s.innerHTML=ids.map(k=>'<span class="bd" title="'+TT[k].n+'" style="color:'+TT[k].c+'"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#'+TT[k].i+'"/></svg>'+(full?'<em>'+TT[k].n+'</em>':'')+'</span>').join('');return s};
+
+/* ---- Sound ---- */
+let ac=null,snd=L.get('trc_snd',1);
+function beep(f1,f2,d,ty,vol,delay){const o=ac.createOscillator(),a=ac.createGain(),t=ac.currentTime+(delay||0);o.type=ty;o.frequency.setValueAtTime(f1,t);o.frequency.exponentialRampToValueAtTime(Math.max(40,f2),t+d);a.gain.setValueAtTime(vol,t);a.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(a);a.connect(ac.destination);o.start(t);o.stop(t+d+.02)}
+function sfx(k){if(!snd)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();
+if(k==='click'){beep(1500,900,.05,'triangle',.07);beep(2400,1800,.02,'sine',.03)}
+else if(k==='ok'){[660,880,1320].forEach((f,i)=>beep(f,f*1.02,.14,'sine',.07,i*.08))}
+else if(k==='err'){beep(220,150,.16,'square',.04)}}catch(e){}}
+document.addEventListener('click',e=>{if(e.target.closest('button,a'))sfx('click')},true);
+const lab=()=>$('#sn').textContent='Sound: '+(snd?'On':'Off');lab();
+$('#sn').onclick=()=>{snd=snd?0:1;L.set('trc_snd',snd);lab();sfx('click')};
+
+
+/* ---- Navigation ---- */
+function refresh(){
+const ok=/^https:\/\//.test(DISCORD_INVITE);
+$$('.dsc').forEach(a=>{if(ok)a.href=DISCORD_INVITE;a.hidden=!ok});
+$('#cdo').replaceChildren(bdg(['owner'],true));$('#cdb').replaceChildren(bdg(['dev'],true))}
+
+function go(v){
+if(!['paid','credit'].includes(v))v='paid';
+$$('.si').forEach(b=>b.classList.toggle('on',b.dataset.go===v));
+$$('.view').forEach(e=>e.classList.remove('on'));
+$('#v-'+v).classList.add('on');
+refresh();scrollTo({top:0})}
+
+document.addEventListener('click',e=>{const t=e.target.closest('[data-go]');if(t)go(t.dataset.go)});
+
+/* ---- Polish ---- */
+const st=$('.stage'),sh=$('.shield');
+st.addEventListener('pointermove',e=>{const r=st.getBoundingClientRect();sh.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*26+'deg');sh.style.setProperty('--rx',-((e.clientY-r.top)/r.height-.5)*20+'deg')});
+st.addEventListener('pointerleave',()=>{sh.style.setProperty('--ry','0deg');sh.style.setProperty('--rx','0deg')});
+$$('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--x',e.clientX-r.left+'px');c.style.setProperty('--y',e.clientY-r.top+'px')}));
+$('#tg').onclick=()=>{const c=$('#sb').classList.toggle('c');L.set('trc_sb',c?1:0)};
+if(L.get('trc_sb',0))$('#sb').classList.add('c');
+$('#th').onclick=()=>{const d=document.documentElement,c=d.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');d.dataset.theme=c==='dark'?'light':'dark';L.set('trc_th',d.dataset.theme)};
+{const t=L.get('trc_th',null);if(t)document.documentElement.dataset.theme=t}
+
+go('paid');
+})();
+</script>
+</body>
+</html>

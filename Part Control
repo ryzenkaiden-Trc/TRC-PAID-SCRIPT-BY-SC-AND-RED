@@ -33,7 +33,7 @@ local Config = {
         { Name = "SCP Monsters or Trevor Creatures",        Chance = 50,  PlaceId = 8838701772,  Banner = "", Link = "https://www.roblox.com/games/8838701772/SCP-Monsters-or-Trevor-Creatures" },
         { Name = "Survive and Kill the Killers in Area 51", Chance = 100, PlaceId = 155382109,   Banner = "", Link = "https://www.roblox.com/games/155382109/Survive-and-Kill-the-Killers-in-Area-51" },
         { Name = "Gun and Armor Testing",                   Chance = 100, PlaceId = 16115051360, Banner = "", Link = "https://www.roblox.com/games/16115051360/Gun-and-Armor-Testing" },
-        { Name = "Survive The Scps",                        Chance = 69, PlaceId =  127015467606551,   Banner = "", Link = "https://www.roblox.com/games/127015467606551/Survive-The-SCPs" },
+        { Name = "Survive The Scps",                        Chance = 69,  PlaceId = 127015467606551, Banner = "", Link = "https://www.roblox.com/games/127015467606551/Survive-The-SCPs" },
     },
 
     ItemGames = {
